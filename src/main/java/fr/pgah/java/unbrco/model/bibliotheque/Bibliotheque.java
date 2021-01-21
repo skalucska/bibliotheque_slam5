@@ -133,6 +133,11 @@ public class Bibliotheque {
   // EFFETS : enregistre le fait que livre est maintenant emprunté (si possible)
   // RENVOIE : vrai si l'opération est un succès
   public boolean enregistrerSortie(Livre livre) {
+    if (livre != null) {
+      if (livre.estSorti() == true) {
+        return false;
+      }
+    }
     return false;
   }
 
@@ -142,8 +147,8 @@ public class Bibliotheque {
   // RENVOIE : vrai si l'opération est un succès
   public boolean enregistrerRetour(Livre livre) {
     if (livre != null) {
-      if (livre.estSorti()) {
-
+      if (livre.estSorti() == false) {
+        return true;
       }
     }
     return false;
